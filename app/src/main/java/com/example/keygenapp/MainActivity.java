@@ -20,26 +20,26 @@ public class MainActivity extends AppCompatActivity {
 
         superListView = findViewById(R.id.superListView);
 
-        getKeys();
+        getSuperHeroes();
     }
 
-    private void getKeys() {
-        Call<List<Results>> call = RetrofitClient.getInstance().getMyApi().getkeys();
+    private void getSuperHeroes() {
+        Call<List<Results>> call = RetrofitClient.getInstance().getMyApi().getsuperHeroes();
         call.enqueue(new Callback<List<Results>>() {
             @Override
             public void onResponse(Call<List<Results>> call, Response<List<Results>> response) {
-                List<Results> mykeyList = response.body();
-                String[] oneHeroes = new String[mykeyList.size()];
+                List<Results> myheroList = response.body();
+                String[] oneHeroes = new String[myheroList.size()];
 
-                for (int i = 0; i < mykeyList.size(); i++) {
-                    oneHeroes[i] = mykeyList.get(i).getName();
+                for (int i = 0; i < myheroList.size(); i++) {
+                    oneHeroes[i] = myheroList.get(i).getName();
                 }
 
                 superListView.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, oneHeroes));
             }
 
             @Override
-             public void onFailure(Call<List<Results>> call, Throwable t) {
+            public void onFailure(Call<List<Results>> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), "An error has occured", Toast.LENGTH_LONG).show();
             }
 
