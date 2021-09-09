@@ -5,7 +5,7 @@ import retrofit2.Call;
 
 
 public interface  Api {
-    String BASE_URL = "https://jsonplaceholder.typicode.com/";
-    @GET("/todos/")
+    String BASE_URL = "https://keygenapp.pythonanywhere.com/api/keys/";
+    @GET("/?format=json")
     Call<List<Results>> getkeys();
 }
