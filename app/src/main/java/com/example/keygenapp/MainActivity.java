@@ -20,22 +20,22 @@ public class MainActivity extends AppCompatActivity {
 
         superListView = findViewById(R.id.superListView);
 
-        getSuperHeroes();
+        getKeys();
     }
 
-    private void getSuperHeroes() {
-        Call<List<Results>> call = RetrofitClient.getInstance().getMyApi().getsuperHeroes();
+    private void getKeys() {
+        Call<List<Results>> call = RetrofitClient.getInstance().getMyApi().getkeys();
         call.enqueue(new Callback<List<Results>>() {
             @Override
             public void onResponse(Call<List<Results>> call, Response<List<Results>> response) {
-                List<Results> myheroList = response.body();
-                String[] oneHeroes = new String[myheroList.size()];
+                List<Results> keylist = response.body();
+                String[] onekey = new String[keylist.size()];
 
-                for (int i = 0; i < myheroList.size(); i++) {
-                    oneHeroes[i] = myheroList.get(i).getName();
+                for (int i = 0; i < keylist.size(); i++) {
+                    onekey[i] = keylist.get(i).getName();
                 }
 
-                superListView.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, oneHeroes));
+                superListView.setAdapter(new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, onekey));
             }
 
             @Override

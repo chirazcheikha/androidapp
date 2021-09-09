@@ -5,15 +5,15 @@ import com.google.gson.annotations.SerializedName;
 
 public class Results {
 
-    @SerializedName("name")
-    private String superName;
+    @SerializedName("key_name")
+    private String key_name;
 
 
-    public Results(String name) {
-        this.superName = name;
+    public Results(String key_name) {
+        this.key_name = key_name;
     }
 
     public String getName() {
-        return superName;
+        return key_name;
     }
 }
